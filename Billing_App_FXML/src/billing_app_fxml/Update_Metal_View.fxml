@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="billing_app_fxml.Update_Metal_ViewController">
+   <children>
+      <AnchorPane prefHeight="54.0" prefWidth="600.0" style="-fx-background-color: #000000;">
+         <children>
+            <Label layoutX="208.0" layoutY="13.0" prefHeight="18.0" prefWidth="183.0" text="Update Window" textFill="#e4d1d1">
+               <font>
+                  <Font name="Arial" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="63.0" prefHeight="310.0" prefWidth="600.0" style="-fx-background-color: #f2f0ec;">
+         <children>
+            <HBox layoutX="21.0" layoutY="14.0" prefHeight="38.0" prefWidth="562.0" style="-fx-background-color: #fdebc8;">
+               <children>
+                  <Label alignment="TOP_CENTER" contentDisplay="BOTTOM" prefHeight="40.0" prefWidth="198.0" text="Metal">
+                     <font>
+                        <Font name="Aparajita Bold" size="23.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="create_metal" prefHeight="30.0" prefWidth="288.0" promptText="Enter metal ">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </HBox>
+            <HBox layoutX="21.0" layoutY="63.0" prefHeight="38.0" prefWidth="562.0" style="-fx-background-color: #fdebc8;">
+               <children>
+                  <Label alignment="TOP_CENTER" contentDisplay="BOTTOM" prefHeight="40.0" prefWidth="198.0" text="Purity">
+                     <font>
+                        <Font name="Aparajita Bold" size="23.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="create_purity" prefHeight="30.0" prefWidth="288.0" promptText="Enter Purity ">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </HBox>
+            <HBox layoutX="21.0" layoutY="112.0" prefHeight="38.0" prefWidth="562.0" style="-fx-background-color: #fdebc8;">
+               <children>
+                  <Label alignment="TOP_CENTER" contentDisplay="BOTTOM" prefHeight="40.0" prefWidth="198.0" text="Rate">
+                     <font>
+                        <Font name="Aparajita Bold" size="23.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="create_rate" prefHeight="30.0" prefWidth="288.0" promptText="Enter Rate ">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </HBox>
+            <HBox layoutX="19.0" layoutY="161.0" prefHeight="38.0" prefWidth="562.0" style="-fx-background-color: #fdebc8;">
+               <children>
+                  <Label alignment="TOP_CENTER" contentDisplay="BOTTOM" prefHeight="40.0" prefWidth="198.0" text="Rate+GST">
+                     <font>
+                        <Font name="Aparajita Bold" size="23.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="create_rate_gst" prefHeight="30.0" prefWidth="288.0" promptText="Enter Rate+GST">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </HBox>
+            <HBox layoutX="18.0" layoutY="209.0" prefHeight="38.0" prefWidth="562.0" style="-fx-background-color: #fdebc8;">
+               <children>
+                  <Label alignment="TOP_CENTER" contentDisplay="BOTTOM" prefHeight="40.0" prefWidth="198.0" text="Unit">
+                     <font>
+                        <Font name="Aparajita Bold" size="23.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="create_unit" prefHeight="30.0" prefWidth="288.0" promptText="Enter Unit">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </HBox>
+            <HBox layoutX="18.0" layoutY="257.0" prefHeight="38.0" prefWidth="562.0" style="-fx-background-color: #fdebc8;">
+               <children>
+                  <Label alignment="TOP_CENTER" contentDisplay="BOTTOM" prefHeight="40.0" prefWidth="198.0" text="Note">
+                     <font>
+                        <Font name="Aparajita Bold" size="23.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="create_note" prefHeight="30.0" prefWidth="288.0" promptText=" Enter Note">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </HBox>
+            <HBox layoutX="19.0" layoutY="307.0" prefHeight="38.0" prefWidth="562.0" style="-fx-background-color: #fdebc8;">
+               <children>
+                  <Label alignment="TOP_CENTER" contentDisplay="BOTTOM" prefHeight="40.0" prefWidth="198.0" text="id">
+                     <font>
+                        <Font name="Aparajita Bold" size="23.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="create_id" prefHeight="30.0" prefWidth="288.0" promptText="Enter Id">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="50.0" layoutY="447.0" prefHeight="54.0" prefWidth="500.0">
+         <children>
+            <ToggleButton fx:id="create_clear" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="167.0" style="-fx-background-color: #f73e21;" text="Clear">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="create_submit" layoutX="312.0" layoutY="8.0" mnemonicParsing="false" onAction="#createProduct" prefHeight="38.0" prefWidth="167.0" style="-fx-background-color: #45f721;" text="Submit">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </ToggleButton>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
