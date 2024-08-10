@@ -10,18 +10,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author panka
  */
 public class Billing_App_FXML extends Application {
-    
+
     @Override
     public void start(Stage stage) throws Exception {
-       // Parent root =FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        // Parent root =FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        
+
         Scene scene = new Scene(root);
         scene.getStylesheets().add("styles.css");
         stage.setScene(scene);
@@ -36,5 +37,5 @@ public class Billing_App_FXML extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

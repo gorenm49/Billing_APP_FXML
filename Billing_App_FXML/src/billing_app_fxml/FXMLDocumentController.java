@@ -28,6 +28,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import static org.apache.logging.log4j.FormatterLoggerManualExample.logger;
 
 /**
  *
@@ -100,6 +101,12 @@ public class FXMLDocumentController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Update window");
             stage.setScene(new Scene(root1));
+            stage.setOnCloseRequest(e -> {
+               // JOptionPane.showMessageDialog(null, "clear ddddd");
+
+                StoreService.clearProduct();
+                refreshTable();
+            });
             stage.show();
             //  refreshTable();
 
@@ -109,6 +116,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     ObservableList<product> listP;
+    //ObservableList<product> ;
 
     int index = -1;
 
@@ -116,18 +124,20 @@ public class FXMLDocumentController implements Initializable {
     ResultSet rs = null;
     PreparedStatement ps = null;
 
+    Update_Metal_ViewController uView = new Update_Metal_ViewController();
+
     @FXML
     void pickupData(MouseEvent event) {
-        index = product.getSelectionModel().getSelectedIndex();
-        Update_Metal_ViewController uView = new Update_Metal_ViewController();
-        uView.sendDataToUpdateView();
-
+        // logger.debug("Button clicked");
+        product getIdFromTable = product.getSelectionModel().getSelectedItem();
+        StoreService.setProduct(getIdFromTable);
+        // uView.sendDataToUpdateView(getIdFromTable);
         // listP = mysqlconnect.getDataProducts();
         // uView.sendDataToUpdateView(prod);
         //create_id.setText(id.getCellData(index).toString());
         //create_metal.setText(metal.getCellData(index).toString());
         //  int picked_id = ;
-        // JOptionPane.showMessageDialog(null, listP);
+        JOptionPane.showMessageDialog(null, getIdFromTable.metal);
     }
 
     /* 
@@ -144,9 +154,11 @@ public class FXMLDocumentController implements Initializable {
         try {
             ps = conn.prepareStatement(sql);
             int getIdFromTable = product.getSelectionModel().getSelectedItem().getId();
-            if (index <= -1) {
+            /*  if (index <= -1) {
                 return;
             }
+             */
+            // JOptionPane.showMessageDialog(null, e);
 
             // int deleteId = index + 1;
 //            ps.setString(1, deleteId.getText());
@@ -180,7 +192,8 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         refreshTable();
-        product.setEditable(true);
+        //product.setEditable(true);
+        //uView.sendDataToUpdateView();
 
     }
 
