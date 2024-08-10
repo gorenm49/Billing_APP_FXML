@@ -116,18 +116,19 @@ public class FXMLDocumentController implements Initializable {
     ResultSet rs = null;
     PreparedStatement ps = null;
 
+    Update_Metal_ViewController uView = new Update_Metal_ViewController();
+    
     @FXML
     void pickupData(MouseEvent event) {
-        index = product.getSelectionModel().getSelectedIndex();
-        Update_Metal_ViewController uView = new Update_Metal_ViewController();
-        uView.sendDataToUpdateView();
+      //  int getIdFromTable = product.getSelectionModel().getSelectedItem().getId();
 
+       // uView.sendDataToUpdateView(getIdFromTable);
         // listP = mysqlconnect.getDataProducts();
         // uView.sendDataToUpdateView(prod);
         //create_id.setText(id.getCellData(index).toString());
         //create_metal.setText(metal.getCellData(index).toString());
         //  int picked_id = ;
-        // JOptionPane.showMessageDialog(null, listP);
+        //JOptionPane.showMessageDialog(null, getIdFromTable);
     }
 
     /* 
@@ -144,12 +145,9 @@ public class FXMLDocumentController implements Initializable {
         try {
             ps = conn.prepareStatement(sql);
             int getIdFromTable = product.getSelectionModel().getSelectedItem().getId();
-            if (index <= -1) {
-                return;
-            }
-
-            // int deleteId = index + 1;
-//            ps.setString(1, deleteId.getText());
+            
+            System.out.print(getIdFromTable);
+       
             ps.setInt(1, getIdFromTable);
 
             ps.execute();
@@ -180,7 +178,8 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         refreshTable();
-        product.setEditable(true);
+        //product.setEditable(true);
+       // uView.sendDataToUpdateView();
 
     }
 

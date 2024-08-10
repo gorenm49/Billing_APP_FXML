@@ -43,7 +43,7 @@
                         <Shadow />
                      </bumpInput>
                      <light>
-                        <Light.Distant />
+                       
                      </light>
                   </Lighting>
                </effect>
@@ -67,7 +67,7 @@
                         <Shadow />
                      </bumpInput>
                      <light>
-                        <Light.Distant />
+                     
                      </light>
                   </Lighting>
                </effect>
@@ -91,7 +91,7 @@
                         <Shadow />
                      </bumpInput>
                      <light>
-                        <Light.Distant />
+                      
                      </light>
                   </Lighting>
                </effect>
@@ -115,7 +115,7 @@
                         <Shadow />
                      </bumpInput>
                      <light>
-                        <Light.Distant />
+                      
                      </light>
                   </Lighting>
                </effect>
@@ -139,7 +139,7 @@
                         <Shadow />
                      </bumpInput>
                      <light>
-                        <Light.Distant />
+                      
                      </light>
                   </Lighting>
                </effect>
@@ -163,7 +163,7 @@
                         <Shadow />
                      </bumpInput>
                      <light>
-                        <Light.Distant />
+                     
                      </light>
                   </Lighting>
                </effect>
@@ -187,7 +187,7 @@
                         <Shadow />
                      </bumpInput>
                      <light>
-                        <Light.Distant />
+                     
                      </light>
                   </Lighting>
                </effect>

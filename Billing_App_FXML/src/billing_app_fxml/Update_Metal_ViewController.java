@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -94,7 +95,7 @@ public class Update_Metal_ViewController implements Initializable {
 
     @FXML
     void createProduct(ActionEvent event) {
-        
+
         conn = mysqlconnect.connectDb();
         String sql = "insert into product(id,purity,unit,metal,note,rate,rate_gst)values(?,?,?,?,?,?,?)";
         String query = "select * from product";
@@ -125,10 +126,42 @@ public class Update_Metal_ViewController implements Initializable {
     }
 
     public void sendDataToUpdateView() {
-        int getIdFromTable = product.getSelectionModel().getSelectedItem().getId();
-         create_id.setText(id.getCellData(getIdFromTable).toString());
+        // int getIdFromTable = product.getSelectionModel().getSelectedItem().getId();
 
-        // JOptionPane.showMessageDialog(null,getIdFromTable);
+        // create_id.setText(id.getCellData(idfromtable).toString());
+        // String query = "select * from product where id = idfromtable";
+        product.setOnMouseClicked(e -> {
+            index = product.getSelectionModel().getFocusedIndex();
+            
+            if(index <= -1){
+                return;
+            }
+
+            create_metal.setText(metal.getCellData(index).toString());
+            create_purity.setText(purity.getCellData(index).toString());
+            create_rate.setText(rate.getCellData(index).toString());
+            create_rate_gst.setText(rate_gst.getCellData(index).toString());
+            create_note.setText(note.getCellData(index).toString());
+            create_id.setText(id.getCellData(index).toString());   
+            create_unit.setText(unit.getCellData(index).toString());
+
+
+            /*   String metalVal = product.getSelectionModel().getSelectedItem().getMetal();
+                int purityVal = product.getSelectionModel().getSelectedItem().getPurity();
+                Double rateVal = product.getSelectionModel().getSelectedItem().getRate();
+                Double rateGstVal = product.getSelectionModel().getSelectedItem().getRate_gst();
+                String noteVal = product.getSelectionModel().getSelectedItem().getNote();
+                int unitVal = product.getSelectionModel().getSelectedItem().getUnit();
+                int idVal = product.getSelectionModel().getSelectedItem().getId();
+
+                create_metal.setText(metalVal);
+                create_purity.setText(""+purityVal);
+                create_rate.setText("" + rateVal);
+                create_rate_gst.setText("" + rateGstVal);
+                create_note.setText("" + noteVal);
+                create_id.setText("" + idVal);
+                create_unit.setText("" + unitVal);  */
+        });
 
         /*  if (indx <= -1) {
             return;
@@ -141,30 +174,10 @@ public class Update_Metal_ViewController implements Initializable {
          create_id.setText(id.getCellData(indx).toString());
          */
         // this.prod = prod;
-        create_metal.setText(prod.getMetal());
-
+        //  create_metal.setText(prod.getMetal());
         // metal.setText(create_metal.getCellData(indx).toString());
     }
 
-    /* @FXML
-     void pickupData(MouseEvent event) {
-        index = product.getSelectionModel().getSelectedIndex();
-
-        if (index <= -1) {
-            return;
-        }
-        
-        
-
-
-        //  int picked_id = ;
-        // JOptionPane.showMessageDialog(null,index+1);
-    }*/
-
- /* void pickup_Data(MouseEvent event){
-        index = product.getSelectionModel().getSelectedIndex();
-        
-    }*/
     public void refreshTable() {
         listP = mysqlconnect.getDataProducts();
         product.setItems(listP);
@@ -174,7 +187,7 @@ public class Update_Metal_ViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        // sendDataToUpdateView(prod);
+         sendDataToUpdateView();
         // refreshTable();
     }
 
