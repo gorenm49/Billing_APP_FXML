@@ -13,8 +13,6 @@ import javax.swing.JOptionPane;
 import java.sql.*;
 import java.sql.PreparedStatement;
 
-/*import java.sql.PreparedStatement;
-import java.sql.ResultSet;*/
 /**
  *
  * @author panka
@@ -32,7 +30,6 @@ public class mysqlconnect {
         }
 
         try {
-            // Class.forName("com.mysql.jdbc.Driver");
             // Class.forName("com.mysql.cj.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/producttest";
             Connection conn = DriverManager.getConnection(url, "root", "Nits@1006");
