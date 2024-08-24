@@ -3,9 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
@@ -16,7 +15,7 @@
 
 <AnchorPane id="AnchorPane" opacity="0.84" prefHeight="653.0" prefWidth="905.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="billing_app_fxml.FXMLDocumentController">
    <children>
-      <AnchorPane id="anchor-header" layoutX="221.0" layoutY="-1.0" prefHeight="87.0" prefWidth="781.0" style="-fx-background-color: #cccccc;" stylesheets="@../resources/styles.css">
+      <AnchorPane id="anchor-header" layoutX="221.0" layoutY="-1.0" opacity="0.48" prefHeight="87.0" prefWidth="781.0" style="-fx-background-color: #cccccc;" stylesheets="@../resources/styles.css">
          <effect>
             <InnerShadow />
          </effect>
@@ -31,7 +30,7 @@
          <children>
             <AnchorPane layoutY="87.0" opacity="0.81" prefHeight="622.0" prefWidth="206.0" style="-fx-background-color: #000000;">
                <children>
-                  <HBox fx:id="sell_Button" layoutX="1.0" layoutY="33.0" onMouseClicked="#openSellModel" prefHeight="46.0" prefWidth="206.0" style="-fx-background-color: #3c3c5d;">
+                  <HBox layoutX="1.0" layoutY="33.0" prefHeight="46.0" prefWidth="206.0" style="-fx-background-color: #3c3c5d;">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="30.0" nodeOrientation="INHERIT">
                            <image>
@@ -135,29 +134,6 @@
                               <Insets left="15.0" top="10.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Label text="Product List" textFill="WHITE">
-                           <font>
-                              <Font name="Impact" size="22.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets left="20.0" top="8.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox layoutX="1.0" layoutY="334.0" prefHeight="46.0" prefWidth="206.0" style="-fx-background-color: #3c3c5d;">
-                     <children>
-                        <ImageView fitHeight="25.0" fitWidth="30.0" nodeOrientation="INHERIT">
-                           <image>
-                              <Image url="@../../../../../../Downloads/information.png" />
-                           </image>
-                           <viewport>
-                              <Rectangle2D />
-                           </viewport>
-                           <HBox.margin>
-                              <Insets left="15.0" top="10.0" />
-                           </HBox.margin>
-                        </ImageView>
                         <Label text="Help" textFill="WHITE">
                            <font>
                               <Font name="Impact" size="22.0" />
@@ -176,22 +152,8 @@
                </font>
             </Label>
          </children></AnchorPane>
-      <AnchorPane accessibleRole="COMBO_BOX" layoutX="221.0" layoutY="111.0" prefHeight="593.0" prefWidth="782.0" style="-fx-background-color: #cccccc;">
+      <AnchorPane accessibleRole="COMBO_BOX" layoutX="221.0" layoutY="111.0" opacity="0.49" prefHeight="593.0" prefWidth="782.0" style="-fx-background-color: #cccccc;">
          <children>
-            <TableView fx:id="product" layoutY="14.0" onMouseClicked="#pickupData" prefHeight="352.0" prefWidth="726.0" AnchorPane.bottomAnchor="241.60000000000002" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-              <columns>
-                  <TableColumn fx:id="id" prefWidth="55.20001220703125" text="id" />
-                <TableColumn fx:id="metal" editable="false" prefWidth="131.20001220703125" text="Metal" />
-                <TableColumn fx:id="purity" prefWidth="87.20001220703125" text="Purity" />
-                  <TableColumn fx:id="rate" prefWidth="128.79998779296875" text="Rate" />
-                  <TableColumn fx:id="rate_gst" prefWidth="129.5999755859375" text="Rate+GST" />
-                  <TableColumn fx:id="unit" prefWidth="120.00006103515625" text="Unit(GMs)" />
-                  <TableColumn fx:id="note" prefWidth="115.199951171875" text="Note" />
-              </columns>
-               <effect>
-                  <ColorAdjust brightness="-0.11" contrast="0.22" hue="0.95" saturation="0.06" />
-               </effect>
-            </TableView>
             <Button fx:id="add_metal" layoutX="14.0" layoutY="388.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #fbc87a;" text="Add Metal">
                <font>
                   <Font name="Arial Bold" size="14.0" />
@@ -207,6 +169,11 @@
                   <Font name="Arial Bold" size="14.0" />
                </font>
             </Button>
+            <HBox prefHeight="46.0" prefWidth="728.0" style="-fx-background-color: #000000;">
+               <children>
+                  <ComboBox fx:id="Choose_Metal" onAction="#ShowComboMetal" prefWidth="150.0" promptText="Choose Metal" />
+               </children>
+            </HBox>
          </children>
          <effect>
             <ColorAdjust />

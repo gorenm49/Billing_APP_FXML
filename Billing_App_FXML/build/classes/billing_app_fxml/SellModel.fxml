@@ -4,24 +4,34 @@
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" opacity="0.84" prefHeight="653.0" prefWidth="905.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="billing_app_fxml.FXMLDocumentController">
-   <children>
+<AnchorPane id="AnchorPane" prefHeight="653.0" prefWidth="905.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="billing_app_fxml.SellModelController">
+  <children>
       <AnchorPane id="anchor-header" layoutX="221.0" layoutY="-1.0" prefHeight="87.0" prefWidth="781.0" style="-fx-background-color: #cccccc;" stylesheets="@../resources/styles.css">
          <effect>
             <InnerShadow />
          </effect>
          <children>
-            <Button fx:id="refresh_metal" layoutX="602.0" layoutY="26.0" mnemonicParsing="false" onAction="#refreshTable" prefHeight="35.0" prefWidth="96.0" style="-fx-background-color: #fbc87a;" text="Refresh">
+            <Button fx:id="refresh_metal" layoutX="672.0" layoutY="37.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="96.0" style="-fx-background-color: #fbc87a;" text="Refresh">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="sell_model_add_row" layoutX="552.0" layoutY="37.0" mnemonicParsing="false" onAction="#addNewsellProductPanel" prefHeight="35.0" prefWidth="96.0" style="-fx-background-color: #1ee425;" text=" Add Row">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="sell_model_delete_row" layoutX="438.0" layoutY="37.0" mnemonicParsing="false" onAction="#deletePreviousSellProductPanel" prefHeight="35.0" prefWidth="96.0" style="-fx-background-color: #e41e73;" text="Delete Row">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
@@ -31,7 +41,7 @@
          <children>
             <AnchorPane layoutY="87.0" opacity="0.81" prefHeight="622.0" prefWidth="206.0" style="-fx-background-color: #000000;">
                <children>
-                  <HBox fx:id="sell_Button" layoutX="1.0" layoutY="33.0" onMouseClicked="#openSellModel" prefHeight="46.0" prefWidth="206.0" style="-fx-background-color: #3c3c5d;">
+                  <HBox fx:id="sell_Button" layoutX="1.0" layoutY="33.0" prefHeight="46.0" prefWidth="206.0" style="-fx-background-color: #3c3c5d;">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="30.0" nodeOrientation="INHERIT">
                            <image>
@@ -135,29 +145,6 @@
                               <Insets left="15.0" top="10.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Label text="Product List" textFill="WHITE">
-                           <font>
-                              <Font name="Impact" size="22.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets left="20.0" top="8.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox layoutX="1.0" layoutY="334.0" prefHeight="46.0" prefWidth="206.0" style="-fx-background-color: #3c3c5d;">
-                     <children>
-                        <ImageView fitHeight="25.0" fitWidth="30.0" nodeOrientation="INHERIT">
-                           <image>
-                              <Image url="@../../../../../../Downloads/information.png" />
-                           </image>
-                           <viewport>
-                              <Rectangle2D />
-                           </viewport>
-                           <HBox.margin>
-                              <Insets left="15.0" top="10.0" />
-                           </HBox.margin>
-                        </ImageView>
                         <Label text="Help" textFill="WHITE">
                            <font>
                               <Font name="Impact" size="22.0" />
@@ -176,41 +163,71 @@
                </font>
             </Label>
          </children></AnchorPane>
-      <AnchorPane accessibleRole="COMBO_BOX" layoutX="221.0" layoutY="111.0" prefHeight="593.0" prefWidth="782.0" style="-fx-background-color: #cccccc;">
+      <BorderPane fx:id="anchorPane_for_add_details" layoutX="221.0" layoutY="195.0" prefHeight="509.0" prefWidth="782.0" style="-fx-background-color: #cccccc;">
+         <top>
+            <VBox fx:id="vbox_container" prefHeight="379.0" prefWidth="782.0" BorderPane.alignment="CENTER" />
+         </top>
+      </BorderPane>
+      <HBox layoutX="220.0" layoutY="155.0" prefHeight="40.0" prefWidth="782.0" style="-fx-background-color: #babebe;">
          <children>
-            <TableView fx:id="product" layoutY="14.0" onMouseClicked="#pickupData" prefHeight="352.0" prefWidth="726.0" AnchorPane.bottomAnchor="241.60000000000002" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-              <columns>
-                  <TableColumn fx:id="id" prefWidth="55.20001220703125" text="id" />
-                <TableColumn fx:id="metal" editable="false" prefWidth="131.20001220703125" text="Metal" />
-                <TableColumn fx:id="purity" prefWidth="87.20001220703125" text="Purity" />
-                  <TableColumn fx:id="rate" prefWidth="128.79998779296875" text="Rate" />
-                  <TableColumn fx:id="rate_gst" prefWidth="129.5999755859375" text="Rate+GST" />
-                  <TableColumn fx:id="unit" prefWidth="120.00006103515625" text="Unit(GMs)" />
-                  <TableColumn fx:id="note" prefWidth="115.199951171875" text="Note" />
-              </columns>
-               <effect>
-                  <ColorAdjust brightness="-0.11" contrast="0.22" hue="0.95" saturation="0.06" />
-               </effect>
-            </TableView>
-            <Button fx:id="add_metal" layoutX="14.0" layoutY="388.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #fbc87a;" text="Add Metal">
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="117.0" text="Metal" textFill="#0b0000">
                <font>
-                  <Font name="Arial Bold" size="14.0" />
+                  <Font name="Arial Black" size="16.0" />
                </font>
-            </Button>
-            <Button fx:id="update_metal" layoutX="206.0" layoutY="388.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #fbc87a;" text="Update">
+               <HBox.margin>
+                  <Insets left="30.0" right="50.0" />
+               </HBox.margin>
+            </Label>
+            <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="41.0" prefWidth="117.0" text="Product" textFill="#0b0000">
                <font>
-                  <Font name="Arial Bold" size="14.0" />
+                  <Font name="Arial Black" size="16.0" />
                </font>
-            </Button>
-            <Button fx:id="delete_metal" layoutX="391.0" layoutY="388.0" mnemonicParsing="false" onAction="#deleteFromPTable" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #fbc87a;" text="Delete">
+               <HBox.margin>
+                  <Insets left="30.0" right="50.0" />
+               </HBox.margin>
+            </Label>
+            <Label alignment="CENTER" layoutX="128.0" layoutY="10.0" prefHeight="41.0" prefWidth="117.0" text="Unit" textFill="#0b0000">
                <font>
-                  <Font name="Arial Bold" size="14.0" />
+                  <Font name="Arial Black" size="16.0" />
                </font>
-            </Button>
+               <HBox.margin>
+                  <Insets left="30.0" right="50.0" />
+               </HBox.margin>
+            </Label>
+            <Label alignment="CENTER" layoutX="128.0" layoutY="10.0" prefHeight="41.0" prefWidth="117.0" text="Charges" textFill="#0b0000">
+               <font>
+                  <Font name="Arial Black" size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="30.0" right="50.0" />
+               </HBox.margin>
+            </Label>
+            <Label alignment="CENTER" layoutX="128.0" layoutY="10.0" prefHeight="41.0" prefWidth="117.0" text="Edit" textFill="#0b0000">
+               <font>
+                  <Font name="Arial Black" size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="30.0" right="50.0" />
+               </HBox.margin>
+            </Label>
          </children>
-         <effect>
-            <ColorAdjust />
-         </effect>
-      </AnchorPane>
-   </children>
+      </HBox>
+      <HBox layoutX="220.0" layoutY="108.0" prefHeight="46.0" prefWidth="782.0" style="-fx-background-color: #000000;">
+         <children>
+            <Label text="Customer Name:" textFill="#fafcf7">
+               <font>
+                  <Font name="Arial Black" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="150.0" top="10.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="customerName" prefHeight="26.0" prefWidth="214.0" promptText="Enter Customer Name ">
+               <HBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+   </children>  
 </AnchorPane>
