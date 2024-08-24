@@ -26,8 +26,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+//import static org.apache.logging.log4j.FormatterLoggerManualExample.logger;
 
 /**
  *
@@ -89,17 +91,27 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextField create_id;
 
-    private Product prod;
+    @FXML
+    private HBox sell_Button;
+
+    // private Product prod;
+    
 
     @FXML
     void handleButtonAction(ActionEvent event) {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Update_Metal_View.fxml"));
+            
             Parent root1 = fxmlLoader.load();
             Stage stage = new Stage();
             stage.setTitle("Update window");
             stage.setScene(new Scene(root1));
+            stage.setOnCloseRequest(e -> {
+
+                StoreService.clearProduct();
+                refreshTable();
+            });
             stage.show();
             //  refreshTable();
 
@@ -109,6 +121,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     ObservableList<product> listP;
+    //ObservableList<product> ;
 
     int index = -1;
 
@@ -116,26 +129,15 @@ public class FXMLDocumentController implements Initializable {
     ResultSet rs = null;
     PreparedStatement ps = null;
 
+    Update_Metal_ViewController uView = new Update_Metal_ViewController();
+
     @FXML
     void pickupData(MouseEvent event) {
-        index = product.getSelectionModel().getSelectedIndex();
-        Update_Metal_ViewController uView = new Update_Metal_ViewController();
-        uView.sendDataToUpdateView();
-
-        // listP = mysqlconnect.getDataProducts();
-        // uView.sendDataToUpdateView(prod);
-        //create_id.setText(id.getCellData(index).toString());
-        //create_metal.setText(metal.getCellData(index).toString());
-        //  int picked_id = ;
-        // JOptionPane.showMessageDialog(null, listP);
+        product getIdFromTable = product.getSelectionModel().getSelectedItem();
+        StoreService.setProduct(getIdFromTable);
+        JOptionPane.showMessageDialog(null, getIdFromTable.metal);
     }
 
-    /* 
-    ObservableList<product> list = FXCollections.observableArrayList(
-            new Dash_table(900, 20, "Gold", "NA", 61500, 62300),
-            new Dash_table(950, 25, "Silver", "NA", 51500, 52300)
-    );
-     */
     public void deleteFromPTable() {
         conn = mysqlconnect.connectDb();
 
@@ -144,20 +146,37 @@ public class FXMLDocumentController implements Initializable {
         try {
             ps = conn.prepareStatement(sql);
             int getIdFromTable = product.getSelectionModel().getSelectedItem().getId();
-            if (index <= -1) {
-                return;
-            }
 
-            // int deleteId = index + 1;
-//            ps.setString(1, deleteId.getText());
             ps.setInt(1, getIdFromTable);
-
             ps.execute();
             JOptionPane.showMessageDialog(null, "Deleted");
             refreshTable();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
 
+        }
+    }
+    
+    @FXML
+    void openSellModel(MouseEvent event) {
+        try {
+           FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SellModel.fxml"));
+          //FXMLLoader fxmlLoader = new FXMLLoader();
+            Parent root1 = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Sell window");
+            stage.setScene(new Scene(root1));
+            stage.show();
+          /*  stage.setOnCloseRequest(e -> {
+
+              //  StoreService.clearProduct();
+                refreshTable();
+            });*/
+            
+            //  refreshTable();
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -180,8 +199,6 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         refreshTable();
-        product.setEditable(true);
-
     }
 
 }

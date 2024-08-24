@@ -5,11 +5,12 @@
         <group>
             <file>file:/C:/Users/panka/OneDrive/Documents/NetBeansProjects/Billing_App_FXML/src/billing_app_fxml/mysqlconnect.java</file>
             <file>file:/C:/Users/panka/OneDrive/Documents/NetBeansProjects/Billing_App_FXML/src/billing_app_fxml/FXMLDocumentController.java</file>
+            <file>file:/C:/Users/panka/OneDrive/Documents/NetBeansProjects/Billing_App_FXML/src/billing_app_fxml/StoreService.java</file>
             <file>file:/C:/Users/panka/OneDrive/Documents/NetBeansProjects/Billing_App_FXML/src/billing_app_fxml/Update_Metal_ViewController.java</file>
-            <file>file:/C:/Users/panka/OneDrive/Documents/NetBeansProjects/Billing_App_FXML/src/billing_app_fxml/FXMLDocument.fxml</file>
+            <file>file:/C:/Users/panka/OneDrive/Documents/NetBeansProjects/Billing_App_FXML/src/entity/SellProduct.java</file>
+            <file>file:/C:/Users/panka/OneDrive/Documents/NetBeansProjects/Billing_App_FXML/src/billing_app_fxml/Adding_Sell_ItemController.java</file>
             <file>file:/C:/Users/panka/OneDrive/Documents/NetBeansProjects/Billing_App_FXML/src/entity/Product.java</file>
-            <file>file:/C:/Users/panka/OneDrive/Documents/NetBeansProjects/Billing_App_FXML/src/billing_app_fxml/Billing_App_FXML.java</file>
-            <file>file:/C:/Users/panka/OneDrive/Documents/NetBeansProjects/Billing_App_FXML/src/resources/styles.css</file>
+            <file>file:/C:/Users/panka/OneDrive/Documents/NetBeansProjects/Billing_App_FXML/src/billing_app_fxml/SellModelController.java</file>
         </group>
     </open-files>
 </project-private>
