@@ -4,6 +4,7 @@
  */
 package billing_app_fxml;
 
+
 //import com.sun.jdi.connect.spi.Connection;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,8 +14,6 @@ import javax.swing.JOptionPane;
 import java.sql.*;
 import java.sql.PreparedStatement;
 
-/*import java.sql.PreparedStatement;
-import java.sql.ResultSet;*/
 /**
  *
  * @author panka
@@ -32,7 +31,6 @@ public class mysqlconnect {
         }
 
         try {
-            // Class.forName("com.mysql.jdbc.Driver");
             // Class.forName("com.mysql.cj.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/producttest";
             Connection conn = DriverManager.getConnection(url, "root", "Nits@1006");
@@ -77,4 +75,37 @@ public class mysqlconnect {
         }
         return list;
     }
+    
+     public static ObservableList<prod_list> getProductList() {
+        Connection conn = connectDb();
+
+        if (conn == null) {
+            return FXCollections.observableArrayList(); // Return empty list if connection is null
+        }
+        ObservableList<prod_list> list = FXCollections.observableArrayList();
+        try {
+            String query = "select * from prod_list";
+            PreparedStatement ps;
+            ps = conn.prepareStatement(query);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                // list.add(new product(Integer.parseInt(rs.getString("id")), (Integer.parseInt(rs.getString("purity"))), (Integer.parseInt(rs.getString("unit"))), rs.getString("metal"), rs.getString("note"), (Double.parseDouble(rs.getString("rate"))), (Double.parseDouble(rs.getString("rate_gst")))));
+                list.add(new prod_list(
+                        rs.getInt("id"),
+                        rs.getString("prod_name")
+                      
+                ));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    
+   /* public static ObservableList<sellproducts> getDataProducts() {
+    
+    }*/
 }
